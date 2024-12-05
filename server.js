@@ -60,6 +60,15 @@ productSchema.pre('save', function (next) {
 const Product = mongoose.model('Product', productSchema);
 
 // Rota para listar todos os produtos (GET)
+app.get('/', async (req, res) => {
+  try {
+    const resp = "Hello Guys !! Let´s Code !!";
+    res.json(resp);
+  } catch (error) {
+    res.status(500).json({ message: 'Erro ao buscar produtos', error });
+  }
+});
+
 app.get('/api/products', async (req, res) => {
   try {
     const products = await Product.find();
